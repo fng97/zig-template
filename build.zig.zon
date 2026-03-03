@@ -1,6 +1,12 @@
 .{
     .name = .zig_template,
     .version = "0.0.0",
+    .dependencies = .{
+        .tidy = .{
+            .url = "git+https://github.com/fng97/tidy.zig#bc1a5e14d4d0a9fab54a335b78537029122c02f7",
+            .hash = "tidy-0.0.1-LZGHARMjAACYKweuFCiY4VNgeGl5CVwneEitV3ZI5H8k",
+        },
+    },
     .fingerprint = 0xf2a35603e747e2ae, // Changing this has security and trust implications.
     .minimum_zig_version = "0.15.2",
     .paths = .{
