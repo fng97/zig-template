@@ -1,13 +1,11 @@
 const std = @import("std");
 
 pub fn build(b: *std.Build) void {
-    const target = b.standardTargetOptions(.{});
-    const optimize = b.standardOptimizeOption(.{});
-
     const run_step = b.step("run", "Run the app");
     const test_step = b.step("test", "Run tests");
 
-    const tidy_dep = b.dependency("tidy", .{ .target = b.graph.host, .optimize = .ReleaseSafe });
+    const target = b.standardTargetOptions(.{});
+    const optimize = b.standardOptimizeOption(.{});
 
     const mod = b.createModule(.{
         .root_source_file = b.path("src/main.zig"),
@@ -30,7 +28,8 @@ pub fn build(b: *std.Build) void {
     });
 
     test_step.dependOn(blk: {
-        const exe = b.addTest(.{ .name = "tidy checks", .root_module = tidy_dep.module("tidy") });
+        const dep = b.dependency("tidy", .{ .target = b.graph.host, .optimize = .ReleaseSafe });
+        const exe = b.addTest(.{ .name = "tidy checks", .root_module = dep.module("tidy") });
         const run = b.addRunArtifact(exe);
         break :blk &run.step;
     });
