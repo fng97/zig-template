@@ -1,6 +1,6 @@
 $ErrorActionPreference = "Stop"
 
-$ZIG_MIRROR="https://pkg.machengine.org/zig"
+$ZIG_MIRROR="https://ziglang.org/download"
 $ZIG_RELEASE = "0.15.2"
 $ZIG_CHECKSUMS = @"
 $ZIG_MIRROR/0.15.2/zig-aarch64-windows-0.15.2.zip b926465f8872bf983422257cd9ec248bb2b270996fbe8d57872cca13b56fc370
